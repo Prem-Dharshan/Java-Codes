@@ -19,7 +19,7 @@ class SeparateDigits {
 
             while (count >= 0) {
                 Integer msb = (int) (num / Math.pow(10, count));
-                System.out.printf("%d3  ", msb);
+                System.out.printf("%d  ", msb);
                 num = num % (int) Math.pow(10, count);
                 count--;
             }
