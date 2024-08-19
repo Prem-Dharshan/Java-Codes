@@ -8,18 +8,21 @@ public class oops {
         Bulldog bulldog = new Bulldog("Max", 3);
         Cat cat = new Cat("Whiskers", 2);
         Parrot parrot = new Parrot("Polly", 1);
+        Animal animal = new Parrot("Parrot", 1);
 
         // Demonstrating encapsulation and inheritance
         dog.eat();
         bulldog.eat();
         cat.eat();
         parrot.eat();
+        animal.eat();
 
         // Demonstrating runtime polymorphism
         dog.sound();
         bulldog.sound();
         cat.sound();
         parrot.sound();
+        animal.sound();
 
         // Demonstrating compile-time polymorphism
         dog.play();
@@ -29,12 +32,12 @@ public class oops {
         parrot.beFriendly();
 
         // Demonstrating access specifiers and error handling with try-catch
-        try {
-            // Attempting to access a private member directly (will throw an error)
-            System.out.println("Trying to access private member directly: " + dog.age); // This line will cause an error
-        } catch (Exception e) {
-            System.out.println("Error: Cannot access private member directly. " + e.getMessage());
-        }
+//        try {
+//            // Attempting to access a private member directly (will throw an error)
+//            System.out.println("Trying to access private member directly: " + dog.age); // This line will cause an error
+//        } catch (Exception e) {
+//            System.out.println("Error: Cannot access private member directly. " + e.getMessage());
+//        }
 
         // Correct way to access private member using public getter method
         System.out.println("Dog's age is: " + dog.getAge());
