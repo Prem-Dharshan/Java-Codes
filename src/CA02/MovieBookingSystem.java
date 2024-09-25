@@ -6,15 +6,15 @@ public class MovieBookingSystem {
 
         // Creating consumers trying to buy tickets
         Consumer consumer1 = new Consumer(theatre, "Alice", 30);
-        Consumer consumer2 = new Consumer(theatre, "Bob", 50);
-        Consumer consumer3 = new Consumer(theatre, "Charlie", 20);
-        Consumer consumer4 = new Consumer(theatre, "David", 40);
+        Consumer consumer12 = new Consumer(theatre, "Bob", 50);
+        Consumer consumer13 = new Consumer(theatre, "Charlie", 20);
+        Consumer consumer14 = new Consumer(theatre, "David", 40);
 
         // Start consumer threads
         consumer1.start();
-        consumer2.start();
-        consumer3.start();
-        consumer4.start();
+        consumer12.start();
+        consumer13.start();
+        consumer14.start();
     }
 }
 
@@ -41,7 +41,7 @@ class Theatre {
 class Consumer extends Thread {
     int tickets;        // Number of tickets the consumer wants
     String name;        // Consumer's name
-    Theatre theatre;    // Shared Theatre object
+    final Theatre theatre;    // Shared Theatre object
 
     // Constructor
     Consumer(Theatre theatre, String name, int rqdTickets) {
