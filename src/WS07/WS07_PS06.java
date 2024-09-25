@@ -21,6 +21,7 @@ class Stock {
     private int items = 0;
     private final int capacity = 10;
 
+
     public synchronized void addStock() throws InterruptedException {
         while (items >= capacity) {
             wait();
