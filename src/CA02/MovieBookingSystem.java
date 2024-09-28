@@ -7,7 +7,7 @@ public class MovieBookingSystem {
         // Creating consumers trying to buy tickets
         Consumer consumer1 = new Consumer(theatre, "Alice", 30);
         Consumer consumer12 = new Consumer(theatre, "Bob", 50);
-        Consumer consumer13 = new Consumer(theatre, "Charlie", 20);
+        Consumer consumer13 = new Consumer(theatre, "Charlie", 20);  
         Consumer consumer14 = new Consumer(theatre, "David", 40);
 
         // Start consumer threads

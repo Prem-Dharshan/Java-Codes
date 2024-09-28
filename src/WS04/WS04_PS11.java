@@ -56,11 +56,12 @@ class ValidWordsCounter {
 
     public static void main(String[] args) {
 
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter a sentence: ");
-        String sentence = scan.nextLine();
+        try (Scanner scan = new Scanner(System.in)) {
+            System.out.print("Enter a sentence: ");
+            String sentence = scan.nextLine();
 
 //        String sentence = "a-b. afad ba-c a! !";
-        System.out.println(countValidWords(sentence));
+            System.out.println(countValidWords(sentence));
+        }
     }
 }

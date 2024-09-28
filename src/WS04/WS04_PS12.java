@@ -40,10 +40,11 @@ class PhoneNumberTranslator {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a string: ");
-        String phoneNumber = scanner.nextLine();
-        String translatedNumber = translatePhoneNumber(phoneNumber);
-        System.out.println("Translated string: " + translatedNumber);
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter a string: ");
+            String phoneNumber = scanner.nextLine();
+            String translatedNumber = translatePhoneNumber(phoneNumber);
+            System.out.println("Translated string: " + translatedNumber);
+        }
     }
 }

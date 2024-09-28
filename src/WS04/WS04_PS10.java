@@ -53,10 +53,11 @@ class WordSearch {
                 {'A', 'D', 'E', 'E'}
         };
 
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Enter a word: ");
-        String word = scan.nextLine();
+        try (Scanner scan = new Scanner(System.in)) {
+            System.out.print("Enter a word: ");
+            String word = scan.nextLine();
 
-        System.out.println(ws.exist(board, word));
+            System.out.println(ws.exist(board, word));
+        }
     }
 }

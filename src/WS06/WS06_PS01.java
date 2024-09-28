@@ -14,6 +14,8 @@ class NegativeArraySize {
             System.out.print("Enter the size of the Array: ");
             int size = sc.nextInt();
 
+            sc.close();
+
             if (size < 0) {
                 throw new NegativeArraySizeException("The given array size is negative.");
             }
