@@ -32,5 +32,14 @@ public class  DateDemo {
         System.out.println("Day after Tomorrow's Date (dd/MM/yyyy): " + format2.format(dayAfterTomorrow));
         System.out.println("Day after Tomorrow's Date (Full format): " + format3.format(dayAfterTomorrow));
         System.out.println("Day after Tomorrow's Date (MM-dd-yyyy): " + format4.format(dayAfterTomorrow));
-    }
+
+        Date date = new Date(0);
+        System.out.println(date);
+
+        Date date1 = new Date(7);
+        System.out.println(date1);
+
+//        Thu Jan 01 05:30:00 IST 1970
+//        Thu Jan 01 05:30:00 IST 1970 // 7 milliseconds after 1st Jan 1970
+  }
 }
