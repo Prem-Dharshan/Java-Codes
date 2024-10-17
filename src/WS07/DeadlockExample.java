@@ -6,14 +6,14 @@ public class DeadlockExample {
     private static final Object lock1 = new Object();
     private static final Object lock2 = new Object();
 
-    public static void main(String[] args) {
+    public static void main() {
         // Create two threads
         Thread thread1 = new Thread(() -> {
             synchronized (lock1) {
                 System.out.println("Thread 1: Holding lock 1...");
 
                 // Simulating some work by pausing the thread
-                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                try { Thread.sleep(100); } catch (InterruptedException _) {}
 
                 System.out.println("Thread 1: Waiting for lock 2...");
 
@@ -29,7 +29,7 @@ public class DeadlockExample {
                 System.out.println("Thread 2: Holding lock 2...");
 
                 // Simulating some work by pausing the thread
-                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                try { Thread.sleep(100); } catch (InterruptedException _) {}
 
                 System.out.println("Thread 2: Waiting for lock 1...");
 

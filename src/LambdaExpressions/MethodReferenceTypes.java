@@ -1,13 +1,22 @@
 package LambdaExpressions;
+
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
-// A custom class to demonstrate method references
+// Functional interface to create a Person object
+@FunctionalInterface
+interface PersonCreator {
+    Person create(String name);
+}
+
+// Separate Person class
 class Person {
     private String name;
 
-    Person(String name) {
+    // Constructor
+    public Person(String name) {
         this.name = name;
     }
 
@@ -16,18 +25,23 @@ class Person {
     }
 
     // Instance method to get the name of the person
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    // Static method to create a Person object
-    static Person createPerson(String name) {
+    // Instance method to compare names
+    public int compareByName(Person other) {
+        return this.name.compareTo(other.name);
+    }
+
+    // Static method to create a Person object (can be used in static method references)
+    public static Person createPerson(String name) {
         return new Person(name);
     }
 
-    // Instance method to compare names
-    int compareByName(Person other) {
-        return this.name.compareTo(other.name);
+    // Instance method to get the name of a Person object (can be used in instance method references)
+    public String getName(Person person) {
+        return person.getName();
     }
 }
 
@@ -35,13 +49,15 @@ public class MethodReferenceTypes {
     public static void main(String[] args) {
         // 1. Reference to a Static Method
         // Syntax: ClassName::methodName
-        Person person1 = Person.createPerson("Alice");
+        PersonCreator personCreator = Person::createPerson; // Using method reference to static method
+        Person person1 = personCreator.create("Alice");
         System.out.println("Created: " + person1.getName()); // Output: Created: Alice
 
         // 2. Reference to an Instance Method of a Particular Object
         // Syntax: instance::methodName
         Person person2 = new Person("Bob");
-        System.out.println("Name: " + person2.getName()); // Output: Name: Bob
+        Function<Person, String> nameFunction = person2::getName; // Reference to the getName method
+        System.out.println("Name via reference: " + nameFunction.apply(person2));
 
         // 3. Reference to an Instance Method of an Arbitrary Object of a Particular Type
         // Syntax: ClassName::instanceMethodName
@@ -60,22 +76,22 @@ public class MethodReferenceTypes {
 }
 
 /** javadoc
-    Explanation of Each Reference Type:
-    Reference to a Static Method:
+ Explanation of Each Reference Type:
+ Reference to a Static Method:
 
-    Example: Person.createPerson(name)
-    Use Case: Used to call a static method that creates or initializes an object.
-    Reference to an Instance Method of a Particular Object:
+ Example: Person::createPerson
+ Use Case: Used to call a static method that creates or initializes an object.
+ Reference to an Instance Method of a Particular Object:
 
-    Example: person2.getName()
-    Use Case: Used to call an instance method on a specific object.
-    Reference to an Instance Method of an Arbitrary Object of a Particular Type:
+ Example: person2::getName
+ Use Case: Used to call an instance method on a specific object.
+ Reference to an Instance Method of an Arbitrary Object of a Particular Type:
 
-    Example: p1.compareByName(p2)
-    Use Case: Useful for instance methods that need to operate on any object of the specified type; here, it sorts Person objects by their names.
-    Reference to a Constructor:
+ Example: Person::compareByName
+ Use Case: Useful for instance methods that need to operate on any object of the specified type; here, it sorts Person objects by their names.
+ Reference to a Constructor:
 
-    Example: new Person("David")
-    Use Case: Used to create new instances of a class directly.
+ Example: Person::new
+ Use Case: Used to create new instances of a class directly.
 
  **/
